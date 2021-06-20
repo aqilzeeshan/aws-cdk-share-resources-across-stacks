@@ -1,15 +1,48 @@
-# Welcome to your CDK TypeScript project!
+# How to share resources across stacks in AWS CDK
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`SharedInfraStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+A repository for an article on: https://dannys.cloud/share-resources-across-stacks-aws-cdk
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## How to Use this repository
 
-## Useful commands
+1. Clone the repository
 
- * `npm run build`   compile typescript to js
- * `npm run watch`   watch for changes and compile
- * `npm run test`    perform the jest unit tests
- * `cdk deploy`      deploy this stack to your default AWS account/region
- * `cdk diff`        compare deployed stack with current state
- * `cdk synth`       emits the synthesized CloudFormation template
+2. Install the dependencies
+
+```bash
+npm install
+```
+
+3. Synthesize the stacks
+
+```bash
+cdk synth
+```
+
+4. Deploy the stacks in the following order
+
+```bash
+cdk deploy SharedInfraStack
+
+cdk deploy RdsStack
+```
+
+5. Open the AWS CloudFormation Console and the stack should be created in your
+   default region
+
+6. Cleanup - Delete the stacks in the following order
+
+```bash
+cdk destroy SharedInfraStack
+
+cdk destroy RdsStack
+```
+
+---
+
+## Author
+
+**[Danny Steenman](https://dannys.cloud)**
+
+<p align="left">
+  <a href="https://dannys.cloud/twitter"><img src="https://img.shields.io/twitter/follow/dannysteenman?label=%40dannysteenman&style=social"></a>
+</p>
